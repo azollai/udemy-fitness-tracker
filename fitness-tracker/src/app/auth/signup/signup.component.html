@@ -33,6 +33,10 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-checkbox ngModel name="agree" color="primary">Agree to Terms and Conditions</mat-checkbox>
-    <button type="submit" mat-raised-button color="primary">Submit</button>
+
+    <button *ngIf="!isLoading; else matSpinner" type="submit" mat-raised-button color="primary">Submit</button>
+    <ng-template #matSpinner>
+      <mat-spinner></mat-spinner>
+    </ng-template>
   </form>
 </section>
