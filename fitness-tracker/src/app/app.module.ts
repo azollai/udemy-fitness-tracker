@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppComponent} from './app.component';
-import {MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HeaderComponent} from './navigation/header/header.component';
@@ -32,6 +32,7 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
     FlexLayoutModule,
 
     MatIconModule,
+    MatButtonModule,
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,

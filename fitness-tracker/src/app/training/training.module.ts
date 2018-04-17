@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {
+  MatButtonModule,
   MatCardModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule,
   MatSortModule, MatTableModule, MatTabsModule
 } from '@angular/material';
@@ -29,6 +30,7 @@ import {TrainingRoutingModule} from './training-routing.module';
     FlexLayoutModule,
 
     MatFormFieldModule,
+    MatButtonModule,
     MatInputModule,
     MatTabsModule,
     MatCardModule,
