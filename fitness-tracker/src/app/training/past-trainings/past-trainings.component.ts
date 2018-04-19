@@ -7,7 +7,7 @@ import {Subscription} from 'rxjs/Subscription';
 @Component({
   selector: 'app-past-trainings',
   templateUrl: './past-trainings.component.html',
-  styleUrls: ['./past-trainings.component.css']
+  styleUrls: ['./past-trainings.component.scss']
 })
 export class PastTrainingsComponent implements OnInit, AfterViewInit, OnDestroy {
 
