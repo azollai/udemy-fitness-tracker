@@ -13,11 +13,13 @@
         formControlName="email"
         name="email"
         required>
-      <mat-error *ngIf="emailControl.hasError('required')">{{ 'VALIDATION.REQUIRED' | translate }}</mat-error>
-      <mat-error *ngIf="!emailControl.hasError('required')">{{ 'VALIDATION.EMAIL' | translate }}</mat-error>
+      <mat-error *ngIf="emailControl.hasError('required'); else emailError">{{ 'VALIDATION.REQUIRED' | translate }}
+      </mat-error>
+      <ng-template #emailError>
+        <mat-error *ngIf="emailControl.hasError('email')">{{ 'VALIDATION.EMAIL' | translate }}</mat-error>
+      </ng-template>
     </mat-form-field>
-    <mat-form-field
-      hintLabel="{{ 'VALIDATION.AT_LEAST_6' | translate }}">
+    <mat-form-field>
       <input
         type="password"
         matInput
@@ -25,7 +27,6 @@
         placeholder="{{ 'AUTH.LOGIN.PASSWORD_PLACEHOLDER' | translate }}"
         name="password"
         required>
-      <mat-hint align="end">{{passwordControl.value?.length}} / 6</mat-hint>
       <mat-error *ngIf="!passwordControl.hasError('minlength')">{{ 'VALIDATION.AT_LEAST_6' | translate }}</mat-error>
     </mat-form-field>
     <button *ngIf="!isLoading; else matSpinner" type="submit" mat-raised-button color="primary">Submit</button>
