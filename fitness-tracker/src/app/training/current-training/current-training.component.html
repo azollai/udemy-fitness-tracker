@@ -1,6 +1,7 @@
 <section fxLayout="column" fxLayoutAlign="center center" class="current-training">
   <mat-progress-spinner mode="determinate" [value]="progress"></mat-progress-spinner>
-  <h1>{{ progress }} %</h1>
-  <p>Keep on going, you can do it!</p>
-  <button mat-raised-button color="accent" (click)="onStop()">Stop</button>
+  <h1>{{ 'TRAINING.CURRENT_TRAINING.PROGRESS' | translate: { value: progress } }}</h1>
+  <p>{{ 'TRAINING.CURRENT_TRAINING.KEEP_ON' | translate }}</p>
+  <button mat-raised-button color="accent" (click)="onStop()">{{ 'TRAINING.CURRENT_TRAINING.STOP' | translate }}
+  </button>
 </section>

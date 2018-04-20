@@ -14,6 +14,7 @@ import {CurrentTrainingComponent} from './current-training/current-training.comp
 import {StopTrainingComponent} from './current-training/stop-training/stop-training.component';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {TrainingRoutingModule} from './training-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,8 @@ import {TrainingRoutingModule} from './training-routing.module';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+
+    TranslateModule.forChild(),
 
     TrainingRoutingModule
   ],

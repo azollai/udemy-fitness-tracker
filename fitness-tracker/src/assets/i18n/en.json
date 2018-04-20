@@ -1,0 +1,61 @@
+{
+  "AUTH": {
+    "SIGNUP": {
+      "EMAIL_PLACEHOLDER": "Your email",
+      "PASSWORD_PLACEHOLDER": "Your password",
+      "BIRTHDATE_PLACEHOLDER": "Your birthdate",
+      "AGREE": "Agree to Terms and Conditions"
+    },
+    "LOGIN": {
+      "EMAIL_PLACEHOLDER": "Your email",
+      "PASSWORD_PLACEHOLDER": "Your password",
+      "BIRTHDATE_PLACEHOLDER": "Your birthdate"
+    }
+  },
+  "WELCOME": {
+    "ACTIVITY": "ACTIVITY",
+    "COMMUNITY": "COMMUNITY",
+    "CHALLENGES": "CHALLENGES",
+    "ACTIVITY_DESC": "Stay active and enjoy better health and more fun!",
+    "COMMUNITY_DESC": "Get to know other people who share your passion!",
+    "CHALLENGES_DESC": "Never stop! Dive into new challenges every day."
+  },
+  "TRAINING": {
+    "NEW_EXERCISE": "New Exercise",
+    "PAST_EXERCISES": "Past Exercises",
+    "CURRENT_TRAINING": {
+      "PROGRESS": "{{value}}%",
+      "KEEP_ON": "Keep on going, you can do it!",
+      "STOP": "Stop",
+      "STOP_TRAINING": {
+        "ARE_YOU_SURE": "Are you sure?",
+        "PROGRESS_STATE": "Your already got {{value}}%"
+      }
+    },
+    "NEW_TRAINING": {
+      "TIME_TO_START": "Time to start workout!",
+      "FETCH_AGAIN": "Fetch Again",
+      "START": "Start"
+    },
+    "PAST_TRAININGS": {
+      "FILTER": "Filter"
+    }
+  },
+  "NAVIGATION": {
+    "TITLE": "NG Fitness",
+    "SIGNUP": "Signup",
+    "LOGIN": "Login",
+    "TRAINING": "Training",
+    "LOGOUT": "Logout"
+  },
+  "ACTIONS": {
+    "SUBMIT": "Submit",
+    "YES": "Yes",
+    "NO": "No"
+  },
+  "VALIDATION": {
+    "REQUIRED": "Field must not be empty",
+    "EMAIL": "E-mail is invalid",
+    "AT_LEAST_6": "Should be at least 6 characters long"
+  }
+}
