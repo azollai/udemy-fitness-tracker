@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TrainingService} from '../training.service';
-import {NgForm} from '@angular/forms';
-import {Subscription} from 'rxjs/Subscription';
-import {ExerciseModel} from '../exercise.model';
-import {UiService} from '../../shared/ui.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { TrainingService } from '../training.service';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
+import { ExerciseModel } from '../exercise.model';
+import { UiService } from '../../shared/ui.service';
 
 @Component({
   selector: 'app-new-training',
@@ -39,7 +39,9 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
   }
 
   onStartTraining(form: NgForm) {
-    this.trainingService.startExercise(form.value.exercise);
+    if (form.valid) {
+      this.trainingService.startExercise(form.value.exercise);
+    }
   }
 
   ngOnDestroy() {

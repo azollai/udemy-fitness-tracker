@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { MAT_DATE_LOCALE, MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './navigation/header/header.component';
@@ -58,7 +58,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthModule,
 
   ],
-  providers: [AuthService, TrainingService, UiService],
+  providers: [
+    AuthService,
+    TrainingService,
+    UiService,
+    {provide: MAT_DATE_LOCALE, useValue: 'en-US'},],
   bootstrap: [AppComponent]
 })
 export class AppModule {

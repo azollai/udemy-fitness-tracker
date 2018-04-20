@@ -28,7 +28,6 @@ export class TrainingService {
         docArray => {
           // throw(new Error());
           return docArray.map(doc => {
-            console.log(doc.payload.doc.data());
             return {
               id: doc.payload.doc.id,
               name: doc.payload.doc.data().name,

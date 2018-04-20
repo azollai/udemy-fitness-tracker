@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../auth.service';
-import {UiService} from '../../shared/ui.service';
-import {Subscription} from 'rxjs/Subscription';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { UiService } from '../../shared/ui.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-login',
@@ -30,10 +30,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.authService.login({
-      email: this.form.value.email,
-      password: this.form.value.password
-    });
+    if (this.form.valid) {
+      this.authService.login({
+        email: this.form.value.email,
+        password: this.form.value.password
+      });
+    }
   }
 
   ngOnDestroy() {

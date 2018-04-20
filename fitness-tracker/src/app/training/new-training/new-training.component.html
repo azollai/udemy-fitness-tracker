@@ -4,11 +4,14 @@
       <mat-card-title fxLayoutAlign="center">{{ 'TRAINING.NEW_TRAINING.TIME_TO_START' | translate }}</mat-card-title>
       <mat-card-content fxLayoutAlign="center">
         <mat-form-field *ngIf="!isLoading && trainings">
-          <mat-select placeholder="Choose Training" ngModel name="exercise" required>
+          <mat-select placeholder="Choose Training" ngModel name="exercise" required #traingingSelect="ngModel">
             <mat-option *ngFor="let training of trainings" [value]="training.id">
               {{ training.name }}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="traingingSelect.hasError('required')">
+            {{ 'VALIDATION.REQUIRED' | translate }}
+          </mat-error>
         </mat-form-field>
           <mat-spinner *ngIf="isLoading"></mat-spinner>
       </mat-card-content>

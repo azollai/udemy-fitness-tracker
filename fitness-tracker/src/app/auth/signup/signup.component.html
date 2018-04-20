@@ -10,8 +10,12 @@
         email
         required
         #emailInput="ngModel">
-      <mat-error *ngIf="emailInput.hasError('required')">{{ 'VALIDATION.REQUIRED' | translate }}</mat-error>
-      <mat-error *ngIf="!emailInput.hasError('required')">{{ 'VALIDATION.EMAIL' | translate }}</mat-error>
+      <mat-error *ngIf="emailInput.hasError('required'); else emailError">
+        {{ 'VALIDATION.REQUIRED' | translate }}
+      </mat-error>
+      <ng-template #emailError>
+        <mat-error *ngIf="emailInput.hasError('email')">{{ 'VALIDATION.EMAIL' | translate }}</mat-error>
+      </ng-template>
     </mat-form-field>
     <mat-form-field
       hintLabel="{{ 'VALIDATION.AT_LEAST_6' | translate }}">
@@ -25,17 +29,31 @@
         minlength="6"
         #pwInput="ngModel">
       <mat-hint align="end">{{pwInput.value?.length}} / 6</mat-hint>
-      <mat-error *ngIf="!pwInput.hasError('minlength')">{{ 'VALIDATION.AT_LEAST_6' | translate }}</mat-error>
+
+      <mat-error *ngIf="pwInput.hasError('required'); else minLengthError">
+        {{ 'VALIDATION.REQUIRED' | translate }}
+      </mat-error>
+      <ng-template #minLengthError>
+        <mat-error *ngIf="pwInput.hasError('minlength')">{{ 'VALIDATION.AT_LEAST_6' | translate }}</mat-error>
+      </ng-template>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="{{ 'AUTH.SIGNUP.PASSWORD_PLACEHOLDER' | translate }}" [matDatepicker]="picker"
-             [max]="maxDate" ngModel name="birthdate" required>
+      <input matInput placeholder="{{ 'AUTH.SIGNUP.BIRTHDATE_PLACEHOLDER' | translate }}" [matDatepicker]="picker"
+             [max]="maxDate" ngModel name="birthdate" required #birthdatePicker="ngModel" (focus)="picker.open()"
+             (click)="picker.open()">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="birthdatePicker.hasError('required')">
+        {{ 'VALIDATION.REQUIRED' | translate }}
+      </mat-error>
     </mat-form-field>
-    <mat-checkbox ngModel name="agree" color="primary">{{ 'AUTH.SIGNUP.AGREE' | translate }}</mat-checkbox>
-
-    <button *ngIf="!isLoading; else matSpinner" type="submit" mat-raised-button color="primary">{{ 'ACTIONS.SUBMIT' |
+    <mat-checkbox ngModel name="agree" color="primary" required #agreeCb="ngModel">{{ 'AUTH.SIGNUP.AGREE' | translate }}
+    </mat-checkbox>
+    <mat-error *ngIf="agreeCb.hasError('required') && (!agreeCb.pristine || submitPressed)">You have to accept the Terms
+      and Conditions
+    </mat-error>
+    <button *ngIf="!isLoading; else matSpinner" type="submit" mat-raised-button color="primary"
+            (click)="submitPressed=true">{{ 'ACTIONS.SUBMIT' |
       translate }}
     </button>
     <ng-template #matSpinner>
