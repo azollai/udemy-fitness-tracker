@@ -32,7 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WelcomeComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'fitness-tracker-app'}),
     BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
