@@ -1,8 +1,10 @@
-{{ 'HELLO' | translate}}
-
 <mat-tab-group *ngIf="!ongoingTraining;else currentTraining">
-  <mat-tab label="New Exercise"><app-new-training></app-new-training></mat-tab>
-  <mat-tab label="Past Exercises"><app-past-trainings></app-past-trainings></mat-tab>
+  <mat-tab label="{{ 'TRAINING.NEW_EXERCISE' | translate }}">
+    <app-new-training></app-new-training>
+  </mat-tab>
+  <mat-tab label="{{ 'TRAINING.PAST_EXERCISES' | translate }}">
+    <app-past-trainings></app-past-trainings>
+  </mat-tab>
 </mat-tab-group>
 <ng-template #currentTraining>
   <app-current-training></app-current-training>

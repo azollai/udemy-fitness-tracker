@@ -9,24 +9,24 @@
       <input
         type="email"
         matInput
-        placeholder="Your email"
+        placeholder="{{ 'AUTH.LOGIN.EMAIL_PLACEHOLDER' | translate }}"
         formControlName="email"
         name="email"
         required>
-      <mat-error *ngIf="emailControl.hasError('required')">Field must not be empty</mat-error>
-      <mat-error *ngIf="!emailControl.hasError('required')">E-mail is invalid</mat-error>
+      <mat-error *ngIf="emailControl.hasError('required')">{{ 'VALIDATION.REQUIRED' | translate }}</mat-error>
+      <mat-error *ngIf="!emailControl.hasError('required')">{{ 'VALIDATION.EMAIL' | translate }}</mat-error>
     </mat-form-field>
     <mat-form-field
-      hintLabel="Should be at least 6 characters long.">
+      hintLabel="{{ 'VALIDATION.AT_LEAST_6' | translate }}">
       <input
         type="password"
         matInput
         formControlName="password"
-        placeholder="Your password"
+        placeholder="{{ 'AUTH.LOGIN.PASSWORD_PLACEHOLDER' | translate }}"
         name="password"
         required>
       <mat-hint align="end">{{passwordControl.value?.length}} / 6</mat-hint>
-      <mat-error *ngIf="!passwordControl.hasError('minlength')">Should be at least 6 characters long</mat-error>
+      <mat-error *ngIf="!passwordControl.hasError('minlength')">{{ 'VALIDATION.AT_LEAST_6' | translate }}</mat-error>
     </mat-form-field>
     <button *ngIf="!isLoading; else matSpinner" type="submit" mat-raised-button color="primary">Submit</button>
     <ng-template #matSpinner>

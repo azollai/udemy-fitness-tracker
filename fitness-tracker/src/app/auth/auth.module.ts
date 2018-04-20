@@ -10,6 +10,7 @@ import {
 } from '@angular/material';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AuthRoutingModule} from './auth-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {AuthRoutingModule} from './auth-routing.module';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    TranslateModule,
 
     MatButtonModule,
     MatFormFieldModule,
