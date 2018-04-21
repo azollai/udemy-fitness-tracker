@@ -20,6 +20,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { AuthState } from './auth/auth.state';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,7 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
 
-    NgxsModule.forRoot([]),
+    NgxsModule.forRoot([AuthState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
 
     AppRoutingModule,
@@ -65,7 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     AuthService,
     UiService,
-    {provide: MAT_DATE_LOCALE, useValue: 'en-US'},],
+    {provide: MAT_DATE_LOCALE, useValue: 'en-US'}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

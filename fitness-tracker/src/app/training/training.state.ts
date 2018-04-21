@@ -3,6 +3,7 @@ import { ExerciseModel } from './exercise.model';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { UiService } from '../shared/ui.service';
 import { Subscription } from 'rxjs/Subscription';
+import { AppState } from '../app.state';
 
 export const START_LOADING = '[Train] START_LOADING';
 export const STOP_LOADING = '[Train] STOP_LOADING';
@@ -12,6 +13,10 @@ export const COMPLETE_CURRENT_EXERCISE = '[Train] COMPLETE_CURRENT_EXERCISE';
 export const CANCEL_CURRENT_EXERCISE = '[Train] CANCEL_CURRENT_EXERCISE';
 export const CANCEL_FBSUBS = '[Train] CANCEL_FBSUBS';
 export const FETCH_COMPLETED_OR_CANCELLED_EXERCISES = '[Train] FETCH_COMPLETED_OR_CANCELLED_EXERCISES';
+
+// export interface TrainingState extends AppState {
+//   training: TrainingStateModel;
+// }
 
 export interface TrainingStateModel {
   isLoading: boolean;

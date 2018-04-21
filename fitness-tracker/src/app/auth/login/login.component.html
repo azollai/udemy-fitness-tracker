@@ -29,7 +29,8 @@
         required>
       <mat-error *ngIf="!passwordControl.hasError('minlength')">{{ 'VALIDATION.AT_LEAST_6' | translate }}</mat-error>
     </mat-form-field>
-    <button *ngIf="!isLoading; else matSpinner" type="submit" mat-raised-button color="primary">Submit</button>
+    <button *ngIf="!(isLoading$ | async); else matSpinner" type="submit" mat-raised-button color="primary">Submit
+    </button>
     <ng-template #matSpinner>
       <mat-spinner></mat-spinner>
     </ng-template>
