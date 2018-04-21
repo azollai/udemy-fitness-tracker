@@ -1,10 +1,11 @@
-import {AuthDataModel} from './auth-data.model';
-import {Subject} from 'rxjs/Subject';
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {AngularFireAuth} from 'angularfire2/auth';
-import {TrainingService} from '../training/training.service';
-import {UiService} from '../shared/ui.service';
+import { AuthDataModel } from './auth-data.model';
+import { Subject } from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { UiService } from '../shared/ui.service';
+import { Store } from '@ngxs/store';
+import * as trainingActions from '../training/training.state';
 
 @Injectable()
 export class AuthService {
@@ -13,8 +14,8 @@ export class AuthService {
 
   constructor(private router: Router,
               private afAuth: AngularFireAuth,
-              private trainingService: TrainingService,
-              private uiService: UiService) {
+              private uiService: UiService,
+              private store: Store) {
 
   }
 
@@ -25,7 +26,7 @@ export class AuthService {
         this.authChange.next(true);
         this.router.navigate(['/training']);
       } else {
-        this.trainingService.cancelSubscriptions();
+        this.store.dispatch(new trainingActions.CancelFbsubs());
         this.isAuthenticated = false;
         this.authChange.next(false);
         this.router.navigate(['/login']);

@@ -15,6 +15,8 @@ import {StopTrainingComponent} from './current-training/stop-training/stop-train
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {TrainingRoutingModule} from './training-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgxsModule } from '@ngxs/store';
+import { TrainingState } from './training.state';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatPaginatorModule,
 
     TranslateModule.forChild(),
+    NgxsModule.forFeature([TrainingState]),
 
     TrainingRoutingModule
   ],

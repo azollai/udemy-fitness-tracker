@@ -3,9 +3,9 @@
     <mat-card fxFlex.xs="100%" fxFlex="400px">
       <mat-card-title fxLayoutAlign="center">{{ 'TRAINING.NEW_TRAINING.TIME_TO_START' | translate }}</mat-card-title>
       <mat-card-content fxLayoutAlign="center">
-        <mat-form-field *ngIf="!isLoading && trainings">
+        <mat-form-field *ngIf="!(isLoading$ | async) && (availableExercises$ | async)">
           <mat-select placeholder="Choose Training" ngModel name="exercise" required #traingingSelect="ngModel">
-            <mat-option *ngFor="let training of trainings" [value]="training.id">
+            <mat-option *ngFor="let training of (availableExercises$ | async)" [value]="training.id">
               {{ training.name }}
             </mat-option>
           </mat-select>
@@ -13,12 +13,14 @@
             {{ 'VALIDATION.REQUIRED' | translate }}
           </mat-error>
         </mat-form-field>
-          <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <mat-spinner *ngIf="(isLoading$ | async)"></mat-spinner>
       </mat-card-content>
-      <mat-card-actions fxLayoutAlign="center" *ngIf="!isLoading">
-        <button *ngIf="trainings" type="submit" mat-button>{{ 'TRAINING.NEW_TRAINING.START' | translate }}</button>
-        <button *ngIf="!trainings" type="button" mat-button (click)="fetchExercises()">{{
-          'TRAINING.NEW_TRAINING.FETCH_AGAIN' | translate }}
+      <mat-card-actions fxLayoutAlign="center" *ngIf="!(isLoading$ | async)">
+        <button *ngIf="(availableExercises$ | async)" type="submit" mat-button>{{ 'TRAINING.NEW_TRAINING.START' |
+          translate }}
+        </button>
+        <button *ngIf="!(availableExercises$ | async)" type="button" mat-button (click)="fetchExercises()">
+          {{ 'TRAINING.NEW_TRAINING.FETCH_AGAIN' | translate }}
         </button>
       </mat-card-actions>
     </mat-card>

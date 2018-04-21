@@ -26,6 +26,8 @@
     "@angular/router": "^5.2.0",
     "@ngx-translate/core": "^9.1.1",
     "@ngx-translate/http-loader": "^3.0.1",
+    "@ngxs/devtools-plugin": "^3.0.0-rc.1",
+    "@ngxs/store": "^2.0.0",
     "angularfire2": "^5.0.0-rc.6.0",
     "core-js": "^2.4.1",
     "firebase": "^4.12.1",
