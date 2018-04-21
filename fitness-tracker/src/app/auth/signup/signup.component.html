@@ -52,7 +52,7 @@
     <mat-error *ngIf="agreeCb.hasError('required') && (!agreeCb.pristine || submitPressed)">You have to accept the Terms
       and Conditions
     </mat-error>
-    <button *ngIf="!isLoading; else matSpinner" type="submit" mat-raised-button color="primary"
+    <button *ngIf="!(isLoading$ | async); else matSpinner" type="submit" mat-raised-button color="primary"
             (click)="submitPressed=true">{{ 'ACTIONS.SUBMIT' |
       translate }}
     </button>

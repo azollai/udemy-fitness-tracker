@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class SignupComponent implements OnInit {
   maxDate: Date;
+  submitPressed: boolean;
   @Select() isLoading$: Observable<boolean>;
 
   constructor(private store: Store,

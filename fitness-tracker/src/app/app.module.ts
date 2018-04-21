@@ -21,6 +21,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AuthState } from './auth/auth.state';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,6 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+
+    environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
 
     TranslateModule.forRoot({
       loader: {
