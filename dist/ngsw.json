@@ -1,0 +1,49 @@
+{
+  "configVersion": 1,
+  "index": "/udemy-fitness-tracker/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/udemy-fitness-tracker/favicon.ico",
+        "/udemy-fitness-tracker/index.html",
+        "/udemy-fitness-tracker/0.b08142dadad0282c3887.chunk.js",
+        "/udemy-fitness-tracker/inline.05c412f7c46d6bbc1215.bundle.js",
+        "/udemy-fitness-tracker/main.0e30e706ec6cc467c7e2.bundle.js",
+        "/udemy-fitness-tracker/polyfills.1a5d8bfaa3b55259e369.bundle.js",
+        "/udemy-fitness-tracker/styles.59e4664819a44a3446d4.bundle.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/udemy-fitness-tracker/assets/icon_128x128.png",
+        "/udemy-fitness-tracker/assets/icon_152x152.png",
+        "/udemy-fitness-tracker/assets/icon_256x256.png",
+        "/udemy-fitness-tracker/assets/icon_512x512.png",
+        "/udemy-fitness-tracker/assets/i18n/en.json"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/udemy-fitness-tracker/0.b08142dadad0282c3887.chunk.js": "36643283c7a2984c505d051a0bfee559f32c2c57",
+    "/udemy-fitness-tracker/assets/icon_128x128.png": "ef2bb874769ecf5eb4de56271aa6c156c04f32e0",
+    "/udemy-fitness-tracker/inline.05c412f7c46d6bbc1215.bundle.js": "6954c3406cc8289fa0185fce7be2120decc07d0c",
+    "/udemy-fitness-tracker/assets/icon_152x152.png": "f37aa1338c4e0ca44631803c8afb153765c0c644",
+    "/udemy-fitness-tracker/main.0e30e706ec6cc467c7e2.bundle.js": "6cdfaffa0051b4ed8db56a09e568636559a9a0b2",
+    "/udemy-fitness-tracker/assets/icon_256x256.png": "58aa6eefb669c888c7e8389a3c90d5849334d97b",
+    "/udemy-fitness-tracker/polyfills.1a5d8bfaa3b55259e369.bundle.js": "a3bc82babbf3ddc6eb7a9b817af4d0eee56376b5",
+    "/udemy-fitness-tracker/assets/icon_512x512.png": "68f31bbc68c334bf31e1f2895d583122fce753c7",
+    "/udemy-fitness-tracker/styles.59e4664819a44a3446d4.bundle.css": "08adbbce1508ef0904444de8feff40f5f59e2dfb",
+    "/udemy-fitness-tracker/assets/i18n/en.json": "10bec74b8a095fbbc4b9fd756e7c85c71533acf3",
+    "/udemy-fitness-tracker/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "/udemy-fitness-tracker/index.html": "e0f81b5b04ad3dff25318c5b3dc545302e2c7e31"
+  }
+}
