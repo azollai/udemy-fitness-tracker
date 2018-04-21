@@ -144,11 +144,10 @@ export class TrainingState {
   }
 
   @Action(SetCurrentExercise)
-  setCurrentExercise({getState, setState}: StateContext<TrainingStateModel>, {payload}: SetCurrentExercise) {
+  setCurrentExercise({getState, patchState}: StateContext<TrainingStateModel>, {payload}: SetCurrentExercise) {
     const state = getState();
     const exercise = state.availableExercises.find(ex => ex.id === payload);
-    return setState({
-      ...state,
+    return patchState({
       currentExercise: {...exercise}
     });
   }
