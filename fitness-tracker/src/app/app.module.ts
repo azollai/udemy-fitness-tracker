@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { AuthService } from './auth/auth.service';
-import { TrainingService } from './training/training.service';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { UiService } from './shared/ui.service';
@@ -19,6 +18,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { AuthState } from './auth/auth.state';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -54,15 +56,17 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
 
+    NgxsModule.forRoot([AuthState]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+
     AppRoutingModule,
     AuthModule,
 
   ],
   providers: [
     AuthService,
-    TrainingService,
     UiService,
-    {provide: MAT_DATE_LOCALE, useValue: 'en-US'},],
+    {provide: MAT_DATE_LOCALE, useValue: 'en-US'}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

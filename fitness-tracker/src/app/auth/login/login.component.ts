@@ -1,46 +1,34 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
-import { UiService } from '../../shared/ui.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs/Observable';
+import * as authActions from '../auth.state';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
 
   form: FormGroup;
   emailControl: FormControl;
   passwordControl: FormControl;
+  @Select() isLoading$: Observable<boolean>;
 
-  isLoading = false;
-  private loadingSubscription: Subscription;
-
-  constructor(private authService: AuthService,
-              private uiService: UiService) {
+  constructor(private store: Store) {
   }
 
   ngOnInit() {
-    this.loadingSubscription = this.uiService.loadingStateChanged.subscribe(isLoading => {
-      this.isLoading = isLoading;
-    });
     this.initForm();
   }
 
   onSubmit() {
     if (this.form.valid) {
-      this.authService.login({
+      this.store.dispatch(new authActions.StartLogin({
         email: this.form.value.email,
         password: this.form.value.password
-      });
-    }
-  }
-
-  ngOnDestroy() {
-    if (this.loadingSubscription) {
-      this.loadingSubscription.unsubscribe();
+      }));
     }
   }
 
