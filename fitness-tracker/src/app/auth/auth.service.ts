@@ -1,5 +1,3 @@
-import { AuthDataModel } from './auth-data.model';
-import { Subject } from 'rxjs/Subject';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -25,7 +23,6 @@ export class AuthService {
           new trainingActions.CancelFbsubs(),
           new authActions.UnsetAuthenticated()
         ]);
-        this.router.navigate(['/login']);
       }
     });
   }

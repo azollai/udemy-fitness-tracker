@@ -2,6 +2,7 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { AuthDataModel } from './auth-data.model';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { UiService } from '../shared/ui.service';
+import { Router } from "@angular/router";
 
 export const START_LOADING = '[Auth] START_LOADING';
 export const STOP_LOADING = '[Auth] STOP_LOADING';
@@ -117,7 +118,9 @@ export class AuthState {
   @Action(StartLogout)
   startLogout({dispatch}: StateContext<AuthStateModel>) {
     this.afAuth.auth.signOut()
-      .then(() => dispatch(new UnsetAuthenticated()));
+      .then(() => {
+        dispatch(new UnsetAuthenticated());
+      });
   }
 
   @Action(StartLogin)
