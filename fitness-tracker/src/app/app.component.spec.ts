@@ -1,27 +1,57 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { HeaderComponent } from './navigation/header/header.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { AuthService } from './auth/auth.service';
+import { AppRoutingModule } from './app-routing.module';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { APP_BASE_HREF } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsModule, Store } from '@ngxs/store';
+
 describe('AppComponent', () => {
+
+  let serviceStub;
+
+  let service: AuthService;
+  let fixture, de, component;
+
   beforeEach(async(() => {
+    serviceStub = {
+      initAuthListener: () => {
+      }
+    }
+
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent, SidenavListComponent, HeaderComponent, WelcomeComponent
       ],
-    }).compileComponents();
+      imports: [
+        AppRoutingModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatListModule,
+        MatToolbarModule,
+        BrowserAnimationsModule,
+        TranslateModule.forRoot(),
+        NgxsModule.forRoot()
+      ],
+      providers: [
+        {provide: AuthService, useValue: serviceStub},
+        {provide: APP_BASE_HREF, useValue: '/'}
+      ]
+    });
   }));
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
-  it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    de = fixture.debugElement;
+  })
+
+  it('should create the app', (() => {
+    expect(component).toBeTruthy();
   }));
 });
