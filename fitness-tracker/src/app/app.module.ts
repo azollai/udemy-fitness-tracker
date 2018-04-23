@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { MAT_DATE_LOCALE, MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import {
+  MAT_DATE_LOCALE, MatButtonModule, MatIconModule, MatListModule, MatSidenavModule,
+  MatToolbarModule
+} from '@angular/material';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './navigation/header/header.component';
@@ -17,11 +20,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AuthState } from './auth/auth.state';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -69,7 +73,13 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     AuthService,
     UiService,
-    {provide: MAT_DATE_LOCALE, useValue: 'en-US'}],
+    {provide: MAT_DATE_LOCALE, useValue: 'en-US'},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
