@@ -12,7 +12,8 @@
     fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
       <li *ngIf="!(isAuthenticated$ | async)"><a routerLink="/signup">{{ 'NAVIGATION.SIGNUP' | translate }}</a></li>
-      <li *ngIf="!(isAuthenticated$ | async)"><a routerLink="/login">{{ 'NAVIGATION.LOGIN' | translate }}</a></li>
+      <li *ngIf="!(isAuthenticated$ | async)"><a name="login" routerLink="/login">{{ 'NAVIGATION.LOGIN' | translate
+        }}</a></li>
       <li *ngIf="(isAuthenticated$ | async)"><a routerLink="/training">{{ 'NAVIGATION.TRAINING' | translate }}</a></li>
       <li *ngIf="(isAuthenticated$ | async)"><a routerLink="/welcome" class="pointer" (click)="logout()">{{
         'NAVIGATION.LOGOUT' | translate
